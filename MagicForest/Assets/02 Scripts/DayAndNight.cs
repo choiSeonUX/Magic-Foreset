@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class DayAndNight : MonoBehaviour
 {
@@ -6,6 +7,15 @@ public class DayAndNight : MonoBehaviour
     [SerializeField] private GameObject Sun;
     [SerializeField] private GameObject Fog;
     [SerializeField] private Light light;
+    [SerializeField] private FadeInOut inout;
+    [SerializeField] private CanvasGroup InvitationUI;
+    [SerializeField] private Button btn; 
+
+    private void Start()
+    {
+        InvitationUI.alpha = 0f; 
+    }
+
     private void Update()
     {
         DisappearDay();
@@ -21,10 +31,11 @@ public class DayAndNight : MonoBehaviour
             Sun.SetActive(false);
             Sun.transform.position = new Vector3(0, -90, 0);
             Fog.transform.position = new Vector3(Fog.transform.position.x, 1f, Fog.transform.position.z);
-
+            inout.FadeIn(InvitationUI, 1);
         }
     }
 
+  
 }
 
 

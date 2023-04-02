@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         if (isRunning || ButtonController.isPressed)
         {
             animator.SetTrigger("Run");
+            Debug.Log("Run");
         }
         else
         {
@@ -48,5 +49,3 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-
-

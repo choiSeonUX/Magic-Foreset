@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01 Scenes/GameScene.unity
     guid: 81ee5c850529eca4b8f11700573892ed
+  - enabled: 1
+    path: Assets/01 Scenes/Cross_Plains.unity
+    guid: 0fcc58a860f3126448fe07c2fbfcaa75
   m_configObjects: {}
