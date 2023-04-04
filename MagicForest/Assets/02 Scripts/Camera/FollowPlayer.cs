@@ -8,19 +8,19 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private Vector3 offset;
 
     private float cameraRotationSpeed = 5.0f;
-    private float cameraXRotation = 90.0f;
-    private float cameraYRotation = 180.0f;
+    private float cameraXRotation = 0f;
+    private float cameraYRotation = 0f;
     private void LateUpdate()
     {
         if (PlayerData.selectNum == 1)
         {
             transform.position = playerTransform[0].position + offset;
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 180f, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.y, transform.rotation.eulerAngles.z);
         }
         else if (PlayerData.selectNum == 2)
         {
             transform.position = playerTransform[1].position + offset;
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 180f, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.y, transform.rotation.eulerAngles.z);
         }
 
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
@@ -29,8 +29,8 @@ public class FollowPlayer : MonoBehaviour
 
         cameraYRotation += mouseX;
         cameraXRotation -= mouseY;
-        cameraYRotation = Mathf.Clamp(cameraYRotation, 60f, 240f);
-        cameraXRotation = Mathf.Clamp(cameraXRotation, -60f, 0f);
+        cameraYRotation = Mathf.Clamp(cameraYRotation, -120f, 120f);
+        cameraXRotation = Mathf.Clamp(cameraXRotation, -60f, 60f);
         transform.rotation = Quaternion.Euler(cameraXRotation, cameraYRotation, 0.0f);
 
 #elif UNITY_IOS || UNITY_ANDROID
@@ -42,7 +42,7 @@ public class FollowPlayer : MonoBehaviour
                 cameraYRotation += touch.deltaPosition.x * cameraRotationSpeed;
                 cameraXRotation -= touch.deltaPosition.y * cameraRotationSpeed;
                 cameraYRotation = Mathf.Clamp(cameraYRotation, 60f,240f);
-                cameraXRotation = Mathf.Clamp(cameraXRotation, -60f, 0f);
+                cameraXRotation = Mathf.Clamp(cameraXRotation, -60f, 60f);
 
                 transform.rotation = Quaternion.Euler(cameraXRotation, cameraYRotation, 0.0f);
             }
